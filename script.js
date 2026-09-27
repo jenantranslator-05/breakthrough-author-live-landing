@@ -6,6 +6,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Light/Dark mode toggle — default (no attribute) is the navy/cream/gold look.
+  // Choice is saved to localStorage so it's remembered on the next visit.
+  const themeToggle = document.getElementById('themeToggle');
+  if (themeToggle) {
+    const root = document.documentElement;
+    const setPressedState = (isDark) => {
+      themeToggle.setAttribute('aria-pressed', String(isDark));
+      themeToggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+    };
+    setPressedState(root.getAttribute('data-theme') === 'dark');
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        root.removeAttribute('data-theme');
+      } else {
+        root.setAttribute('data-theme', 'dark');
+      }
+      setPressedState(!isDark);
+      try {
+        localStorage.setItem('bal-theme', isDark ? 'light' : 'dark');
+      } catch (e) { /* localStorage unavailable — theme just won't persist */ }
+    });
+  }
+
   // Sticky mobile "Join the Challenge" bar — appears once the hero is scrolled past.
   const stickyCta = document.getElementById('stickyCta');
   const hero = document.querySelector('.hero');

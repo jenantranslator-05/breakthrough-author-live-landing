@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Breakthrough Author Live — Write Your Bestselling Book in 4 Weeks</title>
 <meta name="description" content="The 4-Week Challenge for Coaches. Write your bestselling book and use it to land $10K-$50K coaching clients. Join for $47.">
+<meta name="color-scheme" content="light dark">
+<!-- Sets the saved theme before first paint, so there's no flash of the wrong mode.
+     Default (no saved value) is always the light navy/cream/gold look. -->
+<script>
+  (function () {
+    try {
+      if (localStorage.getItem('bal-theme') === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    } catch (e) { /* localStorage unavailable — fall back to default light mode */ }
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,7 +28,13 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <a href="#top" class="logo">Breakthrough Author <span>Live</span></a>
-    <a href="#pricing" class="btn btn-gold btn-small header-cta">Join the Challenge — $47</a>
+    <div class="header-actions">
+      <button type="button" id="themeToggle" class="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12.3 2a9.7 9.7 0 0 0 0 19.4 9.9 9.9 0 0 0 8.4-4.7 0.6 0.6 0 0 0-0.6-0.9 7.7 7.7 0 0 1-9.5-10.6 0.6 0.6 0 0 0-.5-.9 9.7 9.7 0 0 0-1.8-2.3z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M12 4V2m0 20v-2M6.34 6.34 4.93 4.93m14.14 14.14-1.41-1.41M4 12H2m20 0h-2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"/></svg>
+      </button>
+      <a href="#pricing" class="btn btn-gold btn-small header-cta">Join the Challenge — $47</a>
+    </div>
   </div>
 </header>
 
